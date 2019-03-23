@@ -2,12 +2,10 @@ package cvr.otus.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Data
@@ -16,15 +14,21 @@ import java.util.List;
         @NamedQuery(name = "Book.ByName", query = "select a from Book a where a.name=:name")
 })
 
-public class Book extends BaseObject {
+public class Book{
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String name;
+
     private String comment;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Genre> genres = new ArrayList<>();
     @ManyToMany
     private List<Author> authors = new ArrayList<>();
 
     public Book(String name) {
-        super(name);
+        this.name = name;
     }
 
     public Book() {

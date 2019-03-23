@@ -1,22 +1,28 @@
 package cvr.otus.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
-//@Data
+@Data
 @NamedQueries({
         @NamedQuery(name = "Genre.all", query = "select g from Genre g"),
         @NamedQuery(name = "Genre.byName", query = "select g from Genre g where g.name = :name"),
 })
-public class Genre extends BaseObject {
+public class Genre {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String name;
+
     public Genre(String name) {
-        super(name);
+        this.name = name;
     }
 
     public Genre() {
-        super();
+
     }
 
 }

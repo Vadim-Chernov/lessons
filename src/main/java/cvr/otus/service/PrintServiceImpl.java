@@ -6,7 +6,7 @@ import cvr.otus.domain.Genre;
 import cvr.otus.repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class PrintServiceImpl implements PrintService {
@@ -24,7 +24,6 @@ public class PrintServiceImpl implements PrintService {
     }
 
     @Override
-    @Transactional
     public void printBook(Book b) {
         Book book = bookRepository.getById(b.getId());
         System.out.println(book.toString());
