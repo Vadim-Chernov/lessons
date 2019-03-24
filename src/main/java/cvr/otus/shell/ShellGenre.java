@@ -20,12 +20,12 @@ public class ShellGenre {
 
 
     @ShellMethod(value = "добавить жанр", group = "Справочники")
-    public void addGen(@ShellOption String name) {
+    public void addGenre(@ShellOption String name) {
         genreService.add(name);
     }
 
     @ShellMethod(value = "список жанров", group = "Справочники")
-    public void allGen() {
+    public void allGenres() {
         List<Genre> all = genreService.getAll();
         for (Genre genre : all) {
             System.out.println(genre);

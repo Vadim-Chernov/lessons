@@ -36,7 +36,7 @@ public class ShellBook {
 
 
     @ShellMethod(value = "список книг", group = "Справочники")
-    public void allBook() {
+    public void allBooks() {
         List<Book> all = bookService.getAll();
         for (Book book : all) {
             printService.printBook(book);
@@ -44,7 +44,7 @@ public class ShellBook {
     }
 
     @ShellMethod(value = "добавить автора к книге", group = "Работа с книгами")
-    public void plusAut(@ShellOption int b_id, @ShellOption int a_id) {
+    public void plusAuthor(@ShellOption int b_id, @ShellOption int a_id) {
         Book book = bookService.get(b_id);
         Author author = authorService.get(a_id);
         Book book1 = bookService.addAuthor(book, author);
@@ -52,7 +52,7 @@ public class ShellBook {
     }
 
     @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
-    public void plusGen(@ShellOption int b_id,@ShellOption  int g_id) {
+    public void plusGenre(@ShellOption int b_id,@ShellOption  int g_id) {
         Book book = bookService.get(b_id);
         Genre genre = genreService.get(g_id);
         Book book1 = bookService.addGenre(book, genre);
