@@ -3,16 +3,21 @@ package cvr.otus.service;
 import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
 import cvr.otus.domain.Genre;
+import cvr.otus.repo.AuthorRepository;
 import cvr.otus.repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
 
     private final BookRepository repository;
+    @Autowired
+    private AuthorRepository authorRepository;
+
 
     @Autowired
     public BookServiceImpl(BookRepository repository) {
@@ -20,22 +25,25 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addAuthor(Book book, Author author) {
+//    @Transactional
+    public Book addAuthor(int book, int author) {
+//        Book book1 = repository.getById(book.getId());
+//        Author author1 = authorRepository.getById(author.getId());
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book addGenre(Book book, Genre genre) {
+    public Book addGenre(int book, int genre) {
         return repository.addGenre(book, genre);
     }
 
     @Override
-    public Book removeAuthor(Book book, Author author) {
+    public Book removeAuthor(int book, int author) {
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book removeGenre(Book book, Genre genre) {
+    public Book removeGenre(int book, int genre) {
         return repository.removeGenre(book, genre);
     }
 

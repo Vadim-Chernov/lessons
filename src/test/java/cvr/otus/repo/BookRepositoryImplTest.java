@@ -57,7 +57,7 @@ public class BookRepositoryImplTest {
     public void addGenre() {
         Genre genre = genreRepository.add("genre");
         Book add = repository.add("book");
-        Book book = repository.addGenre(add, genre);
+        Book book = repository.addGenre(add.getId(), genre.getId());
         assertEquals("genre", book.getGenres().get(0).getName());
     }
 
@@ -65,7 +65,7 @@ public class BookRepositoryImplTest {
     public void addAuthor() {
         Author author = authorRepository.add("author");
         Book book = repository.add("book");
-        repository.addAuthor(book, author);
+        book = repository.addAuthor(book.getId(), author.getId());
         assertEquals("author", book.getAuthors().get(0).getName());
     }
 
@@ -73,9 +73,9 @@ public class BookRepositoryImplTest {
     public void removeGenre() {
         Genre genre = genreRepository.add("genre");
         Book book = repository.add("book");
-        book = repository.addGenre(book, genre);
+        book = repository.addGenre(book.getId(), genre.getId());
         int size = book.getGenres().size();
-        book = repository.removeGenre(book, genre);
+        book = repository.removeGenre(book.getId(), genre.getId());
         assertEquals(size - 1, book.getGenres().size());
     }
 
@@ -83,9 +83,9 @@ public class BookRepositoryImplTest {
     public void removeAuthor() {
         Author author = authorRepository.add("author");
         Book book = repository.add("book");
-        book = repository.addAuthor(book,author);
+        book = repository.addAuthor(book.getId(),author.getId());
         int size = book.getAuthors().size();
-        book = repository.removeAuthor(book,author);
+        book = repository.removeAuthor(book.getId(),author.getId());
         assertEquals(size - 1, book.getAuthors().size());
     }
 }

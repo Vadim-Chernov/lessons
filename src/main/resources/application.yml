@@ -4,7 +4,10 @@ spring:
   shell:
     interactive:
       enabled: true
-#hibernate:
-#  cache:
-#    region:
-#      factory_class: net.sf.ehcache.hibernate.EhCacheRegionFactory
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+#    /home/chernov/otus/lessons/src/main/resources/db/changelog/db:
+#      changelog-master:
+#        yaml:

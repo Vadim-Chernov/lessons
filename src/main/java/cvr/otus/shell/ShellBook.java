@@ -44,19 +44,33 @@ public class ShellBook {
     }
 
     @ShellMethod(value = "добавить автора к книге", group = "Работа с книгами")
-    public void plusAuthor(@ShellOption int b_id, @ShellOption int a_id) {
-        Book book = bookService.get(b_id);
-        Author author = authorService.get(a_id);
-        Book book1 = bookService.addAuthor(book, author);
+    public void plusAuthor(@ShellOption int b, @ShellOption int a) {
+        Book book1 = bookService.addAuthor(b, a);
+        printService.printBook(book1);
+    }
+    @ShellMethod(value = "добавить автора к книге c b=9 и a=3", group = "Работа с книгами")
+    public void pa() {
+        int b=9;
+        int a=3;
+        Book book1 = bookService.addAuthor(b, a);
         printService.printBook(book1);
     }
 
-    @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
-    public void plusGenre(@ShellOption int b_id,@ShellOption  int g_id) {
-        Book book = bookService.get(b_id);
-        Genre genre = genreService.get(g_id);
-        Book book1 = bookService.addGenre(book, genre);
+    @ShellMethod(value = "добавить жанр к книге c b=9 и g=7", group = "Работа с книгами")
+    public void pg() {
+        int b=9;
+        int g=7;
+        Book book1 = bookService.addGenre(b, g);
         printService.printBook(book1);
     }
+
+
+    @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
+    public void plusGenre(@ShellOption int b,@ShellOption  int g) {
+        Book book1 = bookService.addGenre(b, g);
+        printService.printBook(book1);
+    }
+
+
 
 }

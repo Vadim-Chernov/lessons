@@ -1,7 +1,6 @@
 package cvr.otus.domain;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,9 @@ import java.util.List;
 })
 
 public class Book {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOOK_SQ")
-    @SequenceGenerator(name = "BOOK_SQ", sequenceName = "book_sq")
+    @GeneratedValue
     private int id;
 
     private String name;

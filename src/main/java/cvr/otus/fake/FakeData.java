@@ -22,31 +22,31 @@ public class FakeData {
     }
 
     public void init() {
-        Author author1 = authorRepository.add("Ivanov");
-        Author author2 = authorRepository.add("Petrov");
-        Author author3 = authorRepository.add("Sidorov");
-        Author author4 = authorRepository.add("Stepanov");
+        Author author1 = authorRepository.add("Ivanovich");
+        Author author2 = authorRepository.add("Petrovich");
+        Author author3 = authorRepository.add("Sidorovich");
+        Author author4 = authorRepository.add("Stepanovich");
 
-        Genre genre1 = genreRepository.add("Детектив");
-        Genre genre2 = genreRepository.add("Фантастика");
-        Genre genre3 = genreRepository.add("Анекдоты");
+        Genre genre1 = genreRepository.add("Сказки");
+        Genre genre2 = genreRepository.add("Поэзия");
+        Genre genre3 = genreRepository.add("Наука");
 
-        Book book1 = bookRepository.add("Смертельное убийство");
-        book1.setComment("Очень интересная книга");
-        book1 = bookRepository.addAuthor(book1, author1);
-        book1 = bookRepository.addAuthor(book1, author2);
-        book1 = bookRepository.addGenre(book1, genre1);
+        Book book1 = bookRepository.add("Анатомия");
+        book1.setComment("Очень полезная книга");
+        book1 = bookRepository.addAuthor(book1.getId(), author1.getId());
+        book1 = bookRepository.addAuthor(book1.getId(), author2.getId());
+        book1 = bookRepository.addGenre(book1.getId(), genre3.getId());
 
-        Book book2 = bookRepository.add("Про Чапаева");
-        book2.setComment("НЕ очень интересная книга");
-        book2 = bookRepository.addAuthor(book2, author3);
-        book2 = bookRepository.addGenre(book2, genre3);
+        Book book2 = bookRepository.add("Про бабу Ягу");
+        book2.setComment("НЕ очень полезная книга");
+        book2 = bookRepository.addAuthor(book2.getId(), author3.getId());
+        book2 = bookRepository.addGenre(book2.getId(), genre1.getId());
 
         Book book3 = bookRepository.add("Час быка");
-        book3.setComment("Очень НЕ интересная книга");
-        book3 = bookRepository.addAuthor(book3, author3);
-        book3 = bookRepository.addAuthor(book3, author4);
-        book3 = bookRepository.addGenre(book3, genre2);
-        book3 = bookRepository.addGenre(book3, genre3);
+        book3.setComment("Очень НЕ полезная книга");
+        book3 = bookRepository.addAuthor(book3.getId(), author3.getId());
+        book3 = bookRepository.addAuthor(book3.getId(), author4.getId());
+        book3 = bookRepository.addGenre(book3.getId(), genre1.getId());
+        book3 = bookRepository.addGenre(book3.getId(), genre3.getId());
     }
 }

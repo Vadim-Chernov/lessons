@@ -12,8 +12,7 @@ import javax.persistence.*;
 })
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUTHOR_SQ")
-    @SequenceGenerator(name = "AUTHOR_SQ", sequenceName = "AUTHOR_SQ")
+    @GeneratedValue
     private int id;
 
     private String name;

@@ -13,12 +13,12 @@ public interface BookService{
 
     Book get(int id);
 
-    Book addAuthor(Book book, Author author);
+    Book addAuthor(int book_id, int author_id);
 
-    Book addGenre(Book book, Genre genre);
+    Book addGenre(int book_id, int genre_id);
 
-    Book removeAuthor(Book book, Author author);
+    Book removeAuthor(int book_id, int author_id);
 
-    Book removeGenre(Book book, Genre genre);
+    Book removeGenre(int book_id, int genre_id);
 
 }

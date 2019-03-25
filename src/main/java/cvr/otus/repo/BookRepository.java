@@ -14,11 +14,11 @@ public interface BookRepository {
 
     List<Book> getAll();
 
-    Book addGenre(Book book, Genre genre);
+    Book addGenre(int book, int genre);
 
-    Book addAuthor(Book book, Author author);
+    Book addAuthor(int book, int author);
 
-    Book removeGenre(Book book, Genre genre);
+    Book removeGenre(int book, int genre);
 
-    Book removeAuthor(Book book, Author author);
+    Book removeAuthor(int book, int author);
 }
