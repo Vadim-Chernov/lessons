@@ -7,19 +7,20 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-//import org.junit.jupiter.api.Test;
-
 @DisplayName("BookRepositoryImplTest интерграционный тест")
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@Transactional(propagation = Propagation.REQUIRED)
 
 public class BookRepositoryImplTest {
 
@@ -35,44 +36,44 @@ public class BookRepositoryImplTest {
 
     @Test
     public void getById() {
-        Book book = repository.add("123");
+        Book book = repository.save(new Book("123"));
         Book byId = repository.getById(book.getId());
         assertEquals(book.getId(), byId.getId());
     }
 
     @Test
     public void add() {
-        Book book = repository.add("123");
+        Book book = repository.save(new Book("123"));
         Book byId = repository.getById(book.getId());
         assertEquals("123", byId.getName());
     }
 
     @Test
     public void getAll() {
-        List<Book> all = repository.getAll();
+        List<Book> all = repository.findAll();
         assertNotNull(all);
     }
 
     @Test
     public void addGenre() {
-        Genre genre = genreRepository.add("genre");
-        Book add = repository.add("book");
+        Genre genre = genreRepository.save(new Genre("genre"));
+        Book add = repository.save(new Book("book"));
         Book book = repository.addGenre(add.getId(), genre.getId());
         assertEquals("genre", book.getGenres().get(0).getName());
     }
 
     @Test
     public void addAuthor() {
-        Author author = authorRepository.add("author");
-        Book book = repository.add("book");
+        Author author = authorRepository.save(new Author("author"));
+        Book book = repository.save(new Book("book"));
         book = repository.addAuthor(book.getId(), author.getId());
         assertEquals("author", book.getAuthors().get(0).getName());
     }
 
     @Test
     public void removeGenre() {
-        Genre genre = genreRepository.add("genre");
-        Book book = repository.add("book");
+        Genre genre = genreRepository.save(new Genre("genre"));
+        Book book = repository.save (new Book("book"));
         book = repository.addGenre(book.getId(), genre.getId());
         int size = book.getGenres().size();
         book = repository.removeGenre(book.getId(), genre.getId());
@@ -81,8 +82,8 @@ public class BookRepositoryImplTest {
 
     @Test
     public void removeAuthor() {
-        Author author = authorRepository.add("author");
-        Book book = repository.add("book");
+        Author author = authorRepository.save(new Author("author"));
+        Book book = repository.save (new Book("book"));
         book = repository.addAuthor(book.getId(),author.getId());
         int size = book.getAuthors().size();
         book = repository.removeAuthor(book.getId(),author.getId());

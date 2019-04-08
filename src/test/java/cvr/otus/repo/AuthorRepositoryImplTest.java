@@ -5,17 +5,19 @@ import cvr.otus.domain.Author;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 @DisplayName("AuthorRepositoryImplTest интерграционный тест")
-@RunWith(SpringJUnit4ClassRunner.class)// SpringRunner.class
-@SpringBootTest
+@RunWith(SpringRunner.class)//(SpringJUnit4ClassRunner.class)// SpringRunner.class
+@DataJpaTest
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class AuthorRepositoryImplTest {
 
     @Autowired
@@ -24,7 +26,7 @@ public class AuthorRepositoryImplTest {
     @org.junit.Test
     @DisplayName("getById")
     public void getById() {
-        Author author = authorRepository.add("Петров");
+        Author author = authorRepository.save(new Author("Петров"));
         Author byId = authorRepository.getById(author.getId());
         assertEquals(author.getId(),byId.getId());
     }
@@ -32,8 +34,8 @@ public class AuthorRepositoryImplTest {
     @org.junit.Test
     @DisplayName("add")
     public void add() {
-        Author author = authorRepository.add("Иванов");
-        int id = author.getId();
+        Author author = authorRepository.save(new Author("Иванов"));
+        Long id = author.getId();
         Author byId = authorRepository.getById(id);
         assertEquals("Иванов",byId.getName());
 
@@ -42,7 +44,7 @@ public class AuthorRepositoryImplTest {
     @org.junit.Test
     @DisplayName("add")
     public void getAll() {
-        List<Author> all = authorRepository.getAll();
+        List<Author> all = authorRepository.findAll();
         assertNotNull(all);
     }
 }

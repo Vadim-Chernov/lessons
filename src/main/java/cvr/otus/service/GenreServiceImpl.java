@@ -17,18 +17,17 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public Genre add(String name) {
-        return repository.add(name);
+    public Genre save(Genre name) {
+        return repository.save(name);
     }
 
     @Override
-    public List<Genre> getAll() {
-        List<Genre> all = repository.getAll();
-        return all;
+    public List<Genre> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public Genre get(int id) {
+    public Genre get(Long id) {
         return repository.getById(id);
     }
 }

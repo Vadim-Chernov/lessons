@@ -1,14 +1,16 @@
 package cvr.otus.repo;
 
 import cvr.otus.domain.Genre;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface GenreRepository {
+public interface GenreRepository extends CrudRepository<Genre,Long> {
 
-    Genre getById(int id);
+    Genre getById(Long id);
 
-    Genre add(String name);
+    @SuppressWarnings("unchecked")
+    Genre save(Genre name);
 
-    List<Genre> getAll();
+    List<Genre> findAll();
 }

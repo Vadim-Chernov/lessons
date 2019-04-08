@@ -6,14 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NamedQueries({
-        @NamedQuery(name = "Genre.all", query = "select g from Genre g"),
-        @NamedQuery(name = "Genre.byName", query = "select g from Genre g where g.name = :name"),
-})
+//@NamedQueries({
+//        @NamedQuery(name = "Genre.all", query = "select g from Genre g"),
+//        @NamedQuery(name = "Genre.byName", query = "select g from Genre g where g.name = :name"),
+//})
 public class Genre {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private String name;
 

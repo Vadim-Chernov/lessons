@@ -1,6 +1,6 @@
 package cvr.otus.shell;
 
-import cvr.otus.fake.FakeData;
+//import cvr.otus.fake.FakeData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -10,12 +10,12 @@ import static java.lang.System.exit;
 
 @ShellComponent
 public class ShellOther {
-    private final FakeData fakeData;
+//    private final FakeData fakeData;
 
-    @Autowired
-    public ShellOther(FakeData fakeData) {
-        this.fakeData = fakeData;
-    }
+//    @Autowired
+//    public ShellOther(FakeData fakeData) {
+//        this.fakeData = fakeData;
+//    }
 
 
     @ShellMethod(value = "Bye", group = "Общие")
@@ -24,9 +24,9 @@ public class ShellOther {
     }
 
 
-    @ShellMethod(value = "Заполнить фейком", group = "Общие")
-    public void fake() {
-        fakeData.init();
-    }
+//    @ShellMethod(value = "Заполнить фейком", group = "Общие")
+//    public void fake() {
+//        fakeData.init();
+//    }
 
 }

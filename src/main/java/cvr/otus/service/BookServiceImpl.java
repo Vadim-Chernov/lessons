@@ -26,39 +26,39 @@ public class BookServiceImpl implements BookService {
 
     @Override
 //    @Transactional
-    public Book addAuthor(int book, int author) {
+    public Book addAuthor(Long book, Long author) {
 //        Book book1 = repository.getById(book.getId());
 //        Author author1 = authorRepository.getById(author.getId());
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book addGenre(int book, int genre) {
+    public Book addGenre(Long book, Long genre) {
         return repository.addGenre(book, genre);
     }
 
     @Override
-    public Book removeAuthor(int book, int author) {
+    public Book removeAuthor(Long book, Long author) {
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book removeGenre(int book, int genre) {
+    public Book removeGenre(Long book, Long genre) {
         return repository.removeGenre(book, genre);
     }
 
     @Override
-    public Book add(String name) {
-        return repository.add(name);
+    public Book save(Book book) {
+        return repository.save(book);
     }
 
     @Override
-    public List<Book> getAll() {
-        return repository.getAll();
+    public List<Book> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public Book get(int id) {
+    public Book get(Long id) {
         return repository.getById(id);
     }
 }

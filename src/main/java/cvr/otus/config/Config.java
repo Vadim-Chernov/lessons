@@ -12,8 +12,8 @@ import org.springframework.shell.jline.PromptProvider;
 public class Config {
     /**
      * Бин сделан "вражьим" способом)))
-     *
-     * @return
+     * чтоб запустить Н2-консоль
+     * @return Консоль Н2
      */
     @Bean
     public Console console() {

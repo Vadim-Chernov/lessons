@@ -1,16 +1,18 @@
 package cvr.otus.repo;
 
 import cvr.otus.domain.Author;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface AuthorRepository {
+public interface AuthorRepository extends CrudRepository<Author,Long> {
 
-    Author getById(int id);
+    Author getById(Long id);
 
-    Author add(String name);
+    @SuppressWarnings("unchecked")
+    Author save(Author author);
 
-    List<Author> getAll();
+    List<Author> findAll();
 }
 //org.springframework.beans.factory.BeanCreationException:
 //        Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]:
