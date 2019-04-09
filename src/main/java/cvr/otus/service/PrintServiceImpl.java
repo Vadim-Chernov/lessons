@@ -3,7 +3,7 @@ package cvr.otus.service;
 import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
 import cvr.otus.domain.Genre;
-import cvr.otus.repo.BookRepository;
+import cvr.otus.dao.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

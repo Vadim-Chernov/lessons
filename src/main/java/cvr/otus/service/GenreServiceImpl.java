@@ -1,7 +1,7 @@
 package cvr.otus.service;
 
 import cvr.otus.domain.Genre;
-import cvr.otus.repo.GenreRepository;
+import cvr.otus.dao.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public Genre save(Genre name) {
-        return repository.save(name);
+    public Genre save(Genre genre) {
+        return repository.save(genre.getName());
     }
 
     @Override

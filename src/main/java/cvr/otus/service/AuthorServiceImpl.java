@@ -1,7 +1,7 @@
 package cvr.otus.service;
 
 import cvr.otus.domain.Author;
-import cvr.otus.repo.AuthorRepository;
+import cvr.otus.dao.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author save(Author author) {
-        return repository.save(author);
+        return repository.save(author.getName());
     }
 
     @Override

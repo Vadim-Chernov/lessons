@@ -10,3 +10,4 @@ public class Main {
         ApplicationContext context = SpringApplication.run(Main.class);
     }
 }
+//insert into author (id,name) values (HIBERNATE_SEQUENCE.nextval,'1212121');
