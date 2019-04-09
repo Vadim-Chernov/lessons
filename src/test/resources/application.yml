@@ -4,19 +4,10 @@ spring:
   shell:
     interactive:
       enabled: false
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test;
-    username: sa
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
 
-
-  spring:
-    h2:
-      console:
-        enabled: true
-
-#hibernate:
-#  cache:
-#    region:
-#      factory_class: net.sf.ehcache.hibernate.EhCacheRegionFactory
-
+#    /home/chernov/otus/lessons/src/main/resources/db/changelog/db:
+#      changelog-master:
+#        yaml:

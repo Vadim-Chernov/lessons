@@ -27,14 +27,14 @@
 //    @Test
 //    @DisplayName("getById")
 //    public void getById() {
-//        Genre genre = genreRepository.save("123");
+//        Genre genre = genreRepository.createNew("123");
 //        Genre byId = genreRepository.getById(genre.getId());
 //        assertEquals(genre.getId(), byId.getId());
 //    }
 //
 //    @Test
 //    public void add() {
-//        Genre genre = genreRepository.save("123");
+//        Genre genre = genreRepository.createNew("123");
 //        Genre byId = genreRepository.getById(genre.getId());
 //        assertEquals("123", byId.getName());
 //

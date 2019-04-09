@@ -36,14 +36,14 @@
 //
 //    @Test
 //    public void getById() {
-//        Book book = repository.save("123");
+//        Book book = repository.createNew("123");
 //        Book byId = repository.getById(book.getId());
 //        assertEquals(book.getId(), byId.getId());
 //    }
 //
 //    @Test
 //    public void add() {
-//        Book book = repository.save("123");
+//        Book book = repository.createNew("123");
 //        Book byId = repository.getById(book.getId());
 //        assertEquals("123", byId.getName());
 //    }
@@ -56,24 +56,24 @@
 //
 //    @Test
 //    public void addGenre() {
-//        Genre genre = genreRepository.save("genre");
-//        Book add = repository.save("book");
+//        Genre genre = genreRepository.createNew("genre");
+//        Book add = repository.createNew("book");
 //        Book book = repository.addGenre(add.getId(), genre.getId());
 //        assertEquals("genre", book.getGenres().get(0).getName());
 //    }
 //
 //    @Test
 //    public void addAuthor() {
-//        Author author = authorRepository.save("author");
-//        Book book = repository.save("book");
+//        Author author = authorRepository.createNew("author");
+//        Book book = repository.createNew("book");
 //        book = repository.addAuthor(book.getId(), author.getId());
 //        assertEquals("author", book.getAuthors().get(0).getName());
 //    }
 //
 //    @Test
 //    public void removeGenre() {
-//        Genre genre = genreRepository.save("genre");
-//        Book book = repository.save ("book");
+//        Genre genre = genreRepository.createNew("genre");
+//        Book book = repository.createNew ("book");
 //        book = repository.addGenre(book.getId(), genre.getId());
 //        int size = book.getGenres().size();
 //        book = repository.removeGenre(book.getId(), genre.getId());
@@ -82,8 +82,8 @@
 //
 //    @Test
 //    public void removeAuthor() {
-//        Author author = authorRepository.save("author");
-//        Book book = repository.save ("book");
+//        Author author = authorRepository.createNew("author");
+//        Book book = repository.createNew ("book");
 //        book = repository.addAuthor(book.getId(),author.getId());
 //        int size = book.getAuthors().size();
 //        book = repository.removeAuthor(book.getId(),author.getId());

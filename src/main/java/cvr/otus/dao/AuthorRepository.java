@@ -5,7 +5,7 @@ import cvr.otus.domain.Author;
 import java.util.List;
 
 public interface AuthorRepository {
-    Author save(String name);
+    Author createNew(String name);
 
     List<Author> findAll();
 

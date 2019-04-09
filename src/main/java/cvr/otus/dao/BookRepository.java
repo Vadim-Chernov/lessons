@@ -5,7 +5,7 @@ import cvr.otus.domain.Book;
 import java.util.List;
 
 public interface BookRepository {
-    Book save(String name);
+    Book createNew(String name);
 
     List<Book> findAll();
 

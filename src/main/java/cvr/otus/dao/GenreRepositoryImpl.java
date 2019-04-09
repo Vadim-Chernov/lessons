@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-
 public class GenreRepositoryImpl implements GenreRepository {
     private final NamedParameterJdbcOperations operations;
 
@@ -22,7 +21,7 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
     @Override
-    public Genre save(String name) {
+    public Genre createNew(String name) {
         Map<String, Object> params = Collections.singletonMap("name", name);
         operations.update("insert into genre (id,name) values(HIBERNATE_SEQUENCE.nextval, :name)", params);
         return getByName(name);
@@ -47,14 +46,15 @@ public class GenreRepositoryImpl implements GenreRepository {
         Genre genre = operations.queryForObject("select * from genre where name = :name", params, new GenreMapper());
         return genre;
     }
-    private static class GenreMapper implements RowMapper<Genre> {
-
-        @Override
-        public Genre mapRow(ResultSet rs, int i) throws SQLException {
-            Long id = rs.getLong("id");
-            String name = rs.getString("name");
-            return new Genre(id,name);
-        }
-    }
-
 }
+
+class GenreMapper implements RowMapper<Genre> {
+
+    @Override
+    public Genre mapRow(ResultSet rs, int i) throws SQLException {
+        Long id = rs.getLong("id");
+        String name = rs.getString("name");
+        return new Genre(id,name);
+    }
+}
+

@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book save(Book book) {
-        return repository.save(book.getName());
+        return repository.createNew(book.getName());
     }
 
     @Override

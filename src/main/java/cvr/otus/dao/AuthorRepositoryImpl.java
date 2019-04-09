@@ -20,7 +20,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Author save(String name) {
+    public Author createNew(String name) {
         Map<String, Object> params = Collections.singletonMap("name", name);
         operations.update("insert into author (id,name) values(HIBERNATE_SEQUENCE.nextval, :name)", params);
         return getByName(name);
@@ -46,13 +46,13 @@ public class AuthorRepositoryImpl implements AuthorRepository {
         return author;
     }
 
-    private static class AuthorMapper implements RowMapper<Author> {
+}
+class AuthorMapper implements RowMapper<Author> {
 
-        @Override
-        public Author mapRow(ResultSet rs, int i) throws SQLException {
-            Long id = rs.getLong("id");
-            String name = rs.getString("name");
-            return new Author(id,name);
-        }
+    @Override
+    public Author mapRow(ResultSet rs, int i) throws SQLException {
+        Long id = rs.getLong("id");
+        String name = rs.getString("name");
+        return new Author(id,name);
     }
 }

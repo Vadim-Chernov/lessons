@@ -6,7 +6,7 @@ import cvr.otus.domain.Genre;
 import java.util.List;
 
 public interface GenreRepository {
-    Genre save(String name);
+    Genre createNew(String name);
 
     List<Genre> findAll();
 
