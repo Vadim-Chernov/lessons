@@ -4,79 +4,56 @@ import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
 import cvr.otus.domain.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-//import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-//import javax.transaction.Transactional;
-//import javax.transaction.Transactional;
-import java.util.List;
+public class BookRepositoryImpl implements BookRepositoryCustom {
 
-@Repository
-@Transactional
-public class BookRepositoryImpl implements BookRepository {
-    @PersistenceContext
-    private EntityManager em;
+    private  BookRepository bookRepository;
 
     @Autowired
-    private AuthorRepository authorRepository;
-    @Autowired
-    private GenreRepository genreRepository;
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
-    @Override
-    public Book getById(int id) {
-        return em.find(Book.class, id);
+    private final AuthorRepository authorRepository;
+    private final GenreRepository genreRepository;
+
+//    @Autowired
+    public BookRepositoryImpl( AuthorRepository authorRepository, GenreRepository genreRepository) {
+        this.authorRepository = authorRepository;
+        this.genreRepository = genreRepository;
     }
 
     @Override
-    public Book add(String name) {
-        Book book = new Book(name);
-        Book merged = em.merge(book);
-        return merged;
-    }
-
-    @Override
-    public List<Book> getAll() {
-        final Query selectAll = em.createNamedQuery("Book.all");
-        return selectAll.getResultList();
-    }
-
-    @Override
-    public Book addGenre(int book_id, int genre_id) {
-        Book book = getById(book_id);
+    public Book addGenre(Long book_id, Long genre_id) {
+        Book book = bookRepository.getById(book_id);
         Genre genre = genreRepository.getById(genre_id);
         book.getGenres().add(genre);
-        Book merged = em.merge(book);
-        return merged;
+        return bookRepository.save(book);
     }
 
     @Override
-    public Book addAuthor(int book_id, int author_id) {
-        Book book = getById(book_id);
+    public Book addAuthor(Long book_id, Long author_id) {
+        Book book = bookRepository.getById(book_id);
         Author author = authorRepository.getById(author_id);
         book.getAuthors().add(author);
-        Book merged = em.merge(book);
-        return merged;
+        return bookRepository.save(book);
     }
 
     @Override
-    public Book removeGenre(int book_id, int genre_id) {
-        Book book = getById(book_id);
+    public Book removeGenre(Long book_id, Long genre_id) {
+        Book book = bookRepository.getById(book_id);
         Genre genre = genreRepository.getById(genre_id);
         book.getGenres().remove(genre);
-        Book merged = em.merge(book);
-        return merged;
+        return bookRepository.save(book);
     }
 
     @Override
-    public Book removeAuthor(int book_id, int author_id) {
-        Book book = getById(book_id);
+    public Book removeAuthor(Long book_id, Long author_id) {
+        Book book = bookRepository.getById(book_id);
         Author author = authorRepository.getById(author_id);
         book.getAuthors().remove(author);
-        Book merged = em.merge(book);
-        return merged;
+        return bookRepository.save(book);
     }
+
+
 }

@@ -31,42 +31,26 @@ public class ShellBook {
 
     @ShellMethod(value = "добавить книгу", group = "Работа с книгами")
     public void addBook(@ShellOption String name) {
-        bookService.add(name);
+        bookService.save(new Book(name));
     }
 
 
     @ShellMethod(value = "список книг", group = "Справочники")
     public void allBooks() {
-        List<Book> all = bookService.getAll();
+        List<Book> all = bookService.findAll();
         for (Book book : all) {
             printService.printBook(book);
         }
     }
 
     @ShellMethod(value = "добавить автора к книге", group = "Работа с книгами")
-    public void plusAuthor(@ShellOption int b, @ShellOption int a) {
+    public void plusAuthor(@ShellOption Long b, @ShellOption Long a) {
         Book book1 = bookService.addAuthor(b, a);
         printService.printBook(book1);
     }
-    @ShellMethod(value = "добавить автора к книге c b=9 и a=3", group = "Работа с книгами")
-    public void pa() {
-        int b=9;
-        int a=3;
-        Book book1 = bookService.addAuthor(b, a);
-        printService.printBook(book1);
-    }
-
-    @ShellMethod(value = "добавить жанр к книге c b=9 и g=7", group = "Работа с книгами")
-    public void pg() {
-        int b=9;
-        int g=7;
-        Book book1 = bookService.addGenre(b, g);
-        printService.printBook(book1);
-    }
-
 
     @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
-    public void plusGenre(@ShellOption int b,@ShellOption  int g) {
+    public void plusGenre(@ShellOption Long b,@ShellOption  Long g) {
         Book book1 = bookService.addGenre(b, g);
         printService.printBook(book1);
     }

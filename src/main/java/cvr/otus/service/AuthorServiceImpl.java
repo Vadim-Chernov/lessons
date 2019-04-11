@@ -18,18 +18,17 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author add(String name) {
-        return repository.add(name);
+    public Author save(Author author) {
+        return repository.save(author);
     }
 
     @Override
-    public List<Author> getAll() {
-        List<Author> all = repository.getAll();
-        return all;
+    public List<Author> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public Author get(int id) {
+    public Author get(Long id) {
         return repository.getById(id);
     }
 

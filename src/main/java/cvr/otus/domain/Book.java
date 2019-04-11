@@ -7,16 +7,11 @@ import java.util.List;
 
 @Entity
 @Data
-@NamedQueries({
-        @NamedQuery(name = "Book.all", query = "select a from Book a"),
-        @NamedQuery(name = "Book.ByName", query = "select a from Book a where a.name=:name")
-})
-
 public class Book {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private String name;
 

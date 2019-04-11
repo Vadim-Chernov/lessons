@@ -5,10 +5,10 @@ import cvr.otus.domain.Author;
 import java.util.List;
 
 public interface AuthorService {
-    Author add(String name);
+    Author save(Author name);
 
-    List<Author> getAll();
+    List<Author> findAll();
 
-    Author get(int id);
+    Author get(Long id);
 
 }

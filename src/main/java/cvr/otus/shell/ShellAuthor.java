@@ -21,13 +21,13 @@ public class ShellAuthor {
 
     @ShellMethod(value = "добавить автора", group = "Справочники")
     public void addAuthor(@ShellOption String name) {
-        authorService.add(name);
+        authorService.save(new Author( name));
     }
 
 
     @ShellMethod(value = "список авторов", group = "Справочники")
     public void allAuthors() {
-        List<Author> all = authorService.getAll();
+        List<Author> all = authorService.findAll();
         for (Author author : all) {
             System.out.println(author);
         }

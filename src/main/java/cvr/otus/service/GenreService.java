@@ -5,9 +5,9 @@ import cvr.otus.domain.Genre;
 import java.util.List;
 
 public interface GenreService {
-    Genre add(String name);
+    Genre save(Genre name);
 
-    List<Genre> getAll();
+    List<Genre> findAll();
 
-    Genre get(int id);
+    Genre get(Long id);
 }

@@ -7,18 +7,18 @@ import cvr.otus.domain.Genre;
 import java.util.List;
 
 public interface BookService{
-    Book add(String name);
+    Book save(Book book);
 
-    List<Book> getAll();
+    List<Book> findAll();
 
-    Book get(int id);
+    Book get(Long id);
 
-    Book addAuthor(int book_id, int author_id);
+    Book addAuthor(Long book_id, Long author_id);
 
-    Book addGenre(int book_id, int genre_id);
+    Book addGenre(Long book_id, Long genre_id);
 
-    Book removeAuthor(int book_id, int author_id);
+    Book removeAuthor(Long book_id, Long author_id);
 
-    Book removeGenre(int book_id, int genre_id);
+    Book removeGenre(Long book_id, Long genre_id);
 
 }
