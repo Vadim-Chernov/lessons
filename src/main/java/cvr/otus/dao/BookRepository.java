@@ -1,6 +1,8 @@
 package cvr.otus.dao;
 
+import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
+import cvr.otus.domain.Genre;
 
 import java.util.List;
 
@@ -13,12 +15,13 @@ public interface BookRepository {
 
     Book getByName(String name);
 
-    Book addAuthor(Long book_id, Long author_id);
+    Book addAuthor(Book book, Author author);
 
-    Book addGenre(Long book_id, Long genre_id);
+    Book addGenre(Book book, Genre genre);
 
-    Book removeAuthor(Long book_id, Long author_id);
 
-    Book removeGenre(Long book_id, Long genre_id);
+    Book removeAuthor(Book book, Author author);
+
+    Book removeGenre(Book book, Genre genre);
 
 }

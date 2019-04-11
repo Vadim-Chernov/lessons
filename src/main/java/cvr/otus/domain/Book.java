@@ -26,6 +26,12 @@ public class Book {
         this.name=name;
     }
 
+    public Book(Long id, String name, String comment) {
+        this.id = id;
+        this.name = name;
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

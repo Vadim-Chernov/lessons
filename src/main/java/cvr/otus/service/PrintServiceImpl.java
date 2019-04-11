@@ -26,9 +26,9 @@ public class PrintServiceImpl implements PrintService {
     }
 
     @Override
-    @Transactional
-    public void printBook(Book b) {
-        Book book = bookRepository.getById(b.getId());
+//    @Transactional
+    public void printBook(Book book) {
+//        Book book = bookRepository.getById(b.getId());
         System.out.println(book.toString());
     }
 }

@@ -7,7 +7,7 @@ databaseChangeLog:
         columns:
           - column:
               name: id
-              type: integer
+              type: long
               constraints:
                 nullable: false
                 primaryKey: true

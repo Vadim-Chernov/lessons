@@ -44,33 +44,44 @@ public class ShellBook {
     }
 
     @ShellMethod(value = "добавить автора к книге", group = "Работа с книгами")
-    public void plusAuthor(@ShellOption Long b, @ShellOption Long a) {
-        Book book1 = bookService.addAuthor(b, a);
-        printService.printBook(book1);
-    }
-    @ShellMethod(value = "добавить автора к книге c b=9 и a=3", group = "Работа с книгами")
-    public void pa() {
-        Long b=9L;
-        Long a=3L;
-        Book book1 = bookService.addAuthor(b, a);
+    public void plusAuthor(@ShellOption() Long b, @ShellOption Long a) {
+        Book book = bookService.get(b);
+        Author author = authorService.get(a);
+        Book book1 = bookService.addAuthor(book, author);
         printService.printBook(book1);
     }
 
-    @ShellMethod(value = "добавить жанр к книге c b=9 и g=7", group = "Работа с книгами")
-    public void pg() {
-        Long b=9L;
-        Long g=7L;
-        Book book1 = bookService.addGenre(b, g);
-        printService.printBook(book1);
-    }
-
+//    @ShellMethod(value = "добавить автора к книге c b=9 и a=3", group = "Работа с книгами")
+//    public void pa() {
+//        Long b = 9L;
+//        Long a = 3L;
+//        Book book1 = bookService.addAuthor(b, a);
+//        printService.printBook(book1);
+//    }
+//
+//    @ShellMethod(value = "добавить жанр к книге c b=9 и g=7", group = "Работа с книгами")
+//    public void pg() {
+//        Long b = 9L;
+//        Long g = 7L;
+//        Book book1 = bookService.addGenre(b, g);
+//        printService.printBook(book1);
+//    }
+//
+//    @ShellMethod(value = "удалить жанр к книге c b=9 и g=7", group = "Работа с книгами")
+//    public void dg() {
+//        Long b = 9L;
+//        Long g = 7L;
+//        Book book1 = bookService.removeGenre(b, g);
+//        printService.printBook(book1);
+//    }
 
     @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
-    public void plusGenre(@ShellOption Long b,@ShellOption  Long g) {
-        Book book1 = bookService.addGenre(b, g);
+    public void plusGenre(@ShellOption Long b, @ShellOption Long g) {
+        Book book = bookService.get(b);
+        Genre genre = genreService.get(g);
+        Book book1 = bookService.addGenre(book, genre);
         printService.printBook(book1);
     }
-
 
 
 }

@@ -1,8 +1,10 @@
 package cvr.otus.service;
 
+import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
 import cvr.otus.dao.AuthorRepository;
 import cvr.otus.dao.BookRepository;
+import cvr.otus.domain.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +24,22 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addAuthor(Long book, Long author) {
+    public Book addAuthor(Book book, Author author) {
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book addGenre(Long book, Long genre) {
+    public Book addGenre(Book book, Genre genre) {
         return repository.addGenre(book, genre);
     }
 
     @Override
-    public Book removeAuthor(Long book, Long author) {
-        return repository.addAuthor(book, author);
+    public Book removeAuthor(Book book, Author author) {
+        return repository.removeAuthor(book, author);
     }
 
     @Override
-    public Book removeGenre(Long book, Long genre) {
+    public Book removeGenre(Book book, Genre genre) {
         return repository.removeGenre(book, genre);
     }
 
