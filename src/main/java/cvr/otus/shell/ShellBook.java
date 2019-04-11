@@ -48,22 +48,6 @@ public class ShellBook {
         Book book1 = bookService.addAuthor(b, a);
         printService.printBook(book1);
     }
-    @ShellMethod(value = "добавить автора к книге c b=9 и a=3", group = "Работа с книгами")
-    public void pa() {
-        Long b=9L;
-        Long a=3L;
-        Book book1 = bookService.addAuthor(b, a);
-        printService.printBook(book1);
-    }
-
-    @ShellMethod(value = "добавить жанр к книге c b=9 и g=7", group = "Работа с книгами")
-    public void pg() {
-        Long b=9L;
-        Long g=7L;
-        Book book1 = bookService.addGenre(b, g);
-        printService.printBook(book1);
-    }
-
 
     @ShellMethod(value = "добавить жанр  к книге", group = "Работа с книгами")
     public void plusGenre(@ShellOption Long b,@ShellOption  Long g) {
