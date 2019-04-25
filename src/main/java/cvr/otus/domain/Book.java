@@ -1,6 +1,7 @@
 package cvr.otus.domain;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ public class Book {
     private String name;
 
     private String comment;
+
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = {})
     private List<Genre> genres = new ArrayList<>();
     @ManyToMany(fetch = FetchType.LAZY, cascade = {})
@@ -26,6 +29,10 @@ public class Book {
     }
 
     public Book() {
+    }
+
+    private String sayAuthros() {
+        return authors.toString();
     }
 
     @Override

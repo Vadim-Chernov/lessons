@@ -1,13 +1,8 @@
 spring:
   jmx:
     enabled: false
-  shell:
-    interactive:
-      enabled: true
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-
-#    /home/chernov/otus/lessons/src/main/resources/db/changelog/db:
-#      changelog-master:
-#        yaml:
+server:
+  port: 8888

@@ -13,6 +13,8 @@ public interface BookService{
 
     Book get(Long id);
 
+    void remove(Long id);
+
     Book addAuthor(Long book_id, Long author_id);
 
     Book addGenre(Long book_id, Long genre_id);
