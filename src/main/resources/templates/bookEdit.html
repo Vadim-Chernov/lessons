@@ -28,26 +28,145 @@
             <label for="content">Описание</label>
             <textarea class="form-control" id="content" th:field="${book.comment}"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a href="#" th:href="@{/}" class="btn btn-danger" role="button">Cancel</a>
-        <h2>Авторы</h2>
-        <tr th:each="author : ${book.authors}">
-            <td th:text="${author.id}">1</td>
-            <td th:text="${author.name}">Камасутра</td>
-            <!--            <td>-->
-            <!--                <a href="/bookEdit/1" th:href="@{/bookEdit/__${books.id}__}">Edit</a>-->
-            <!--                <a href="/notesDelete/1" th:href="@{/bookEdit/__${books.id}__}">Delete</a>-->
-            <!--            </td>-->
-        </tr>
-        <h2>Жанры</h2>
-        <tr th:each="genre : ${book.genres}">
-            <td th:text="${genre.id}">1</td>
-            <td th:text="${genre.name}">Камасутра</td>
-            <!--            <td>-->
-            <!--                <a href="/bookEdit/1" th:href="@{/bookEdit/__${books.id}__}">Edit</a>-->
-            <!--                <a href="/notesDelete/1" th:href="@{/bookEdit/__${books.id}__}">Delete</a>-->
-            <!--            </td>-->
-        </tr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Авторы</th>
+            </tr>
+            </thead>
+            <tbody>
+            <table class="table" border="single">
+                <thead>
+                <tr>
+                    <th>Авторы книги</th>
+                    <th>Все авторы</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th> Ф И О</th>
+                                <th>Удалить?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="author : ${book.authors}">
+                                <td th:text="${author.id}" hidden></td>
+                                <td th:text="${author.name}"></td>
+                                <td>
+                                    <a th:href="@{/book/__${book.id}__/author/del/__${author.id}__ }">Да</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table" border="single">
+                            <thead>
+                            <tr>
+                                <th> Ф И О</th>
+                                <th>Добавить?</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            </tr>
+                            <tr th:each="author : ${book.authors}">
+                                <td th:text="${author.id}" hidden></td>
+                                <td th:text="${author.name}"></td>
+                                <td>
+                                    <a th:href="@{/book/__${book.id}__/author/add/__${author.id}__ }">Да</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Жанры</th>
+            </tr>
+            </thead>
+            <tbody>
+            <table class="table" border="single">
+                <thead>
+                <tr>
+                    <th>Жанры книги</th>
+                    <th>Все жанры</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Удалить ?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="genre : ${book.genres}">
+                                <td th:text="${genre.id}" hidden>1</td>
+                                <td th:text="${genre.name}">Камасутра</td>
+                                <td>
+                                    <a href="/bookEdit/1" th:href="@{/bookEdit/__${genre.id}__}">Да</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+                        <table class="table" border="single">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Операция</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td>Petrov</td>
+                                <td>Добавить</td>
+                            </tr>
+                            <tr>
+                                <td>Sidorov</td>
+                                <td>Добавить</td>
+                            </tr>
+                            <tr>
+                                <td>Petrov</td>
+                                <td>Добавить</td>
+                            </tr>
+                            <tr>
+                                <td>Petrov</td>
+                                <td>Добавить</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </tbody>
+        </table>
+
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="#" th:href="@{/}" class="btn btn-danger" role="button">Отменить</a>
 
     </form>
 

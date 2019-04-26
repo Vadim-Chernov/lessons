@@ -33,41 +33,53 @@ public class BookController {
     public String bookEdit(Model model, @PathVariable(required = false, name = "id") Long id) {
         if (null != id) {
             Book book = bookService.get(id);
-            model.addAttribute("book",book );
+            model.addAttribute("book", book);
         } else {
             model.addAttribute("book", new Book());
         }
         return "bookEdit";
     }
 
-    @RequestMapping(value = {"/authorList/{id}"}, method = RequestMethod.GET)
-    public String authorList(Model model, @PathVariable(required = false, name = "id") Long id) {
-        Book book = bookService.get(id);
-        model.addAttribute("authorList",book.getAuthors() );
-        return "authorList";
-    }
-
-    @RequestMapping(value = {"/genreList/{id}"}, method = RequestMethod.GET)
-    public String genreList(Model model, @PathVariable(required = false, name = "id") Long id) {
-        Book book = bookService.get(id);
-        model.addAttribute("genreList",book.getGenres() );
-        return "genreList";
-    }
-
 
     @RequestMapping(value = "/bookEdit", method = RequestMethod.POST)
     public String bookEdit(Model model, Book book) {
-        bookService.save(book);
-        model.addAttribute("bookList", bookService.findAll());
-        return "bookList";
+        Book book1 = bookService.get(book.getId());
+        if (book1 != null) {
+            book1.setName(book.getName());
+            book1.setComment(book.getComment());
+            bookService.save(book1);
+            model.addAttribute("bookList", bookService.findAll());
+            return "bookList";
+        }
+        return "error";
     }
 
     @RequestMapping(value = "/bookDelete/{id}", method = RequestMethod.GET)
-    public String bookDelete(Model model, @PathVariable(required = true, name = "id") Long id) {
+    public String bookDeleted(Model model, @PathVariable(required = true, name = "id") Long id) {
         bookService.remove(id);
         model.addAttribute("bookList", bookService.findAll());
         return "bookList";
     }
+
+    @RequestMapping(value = "/book/{book_id}/author/del/{author_id}", method = RequestMethod.GET)
+    public String authorDelete(Model model,
+                               @PathVariable(required = true, name = "book_id") Long book_id,
+                               @PathVariable(required = true, name = "author_id") Long author_id) {
+        bookService.removeAuthor(book_id,author_id);
+        Book book = bookService.get(book_id);
+        model.addAttribute("book", book);
+        return "bookEdit";
+    }
+    @RequestMapping(value = "/book/{book_id}/author/add/{author_id}", method = RequestMethod.GET)
+    public String authorAdd(Model model,
+                               @PathVariable(required = true, name = "book_id") Long book_id,
+                               @PathVariable(required = true, name = "author_id") Long author_id) {
+        bookService.addAuthor(book_id,author_id);
+        Book book = bookService.get(book_id);
+        model.addAttribute("book", book);
+        return "bookEdit";
+    }
+
     @RequestMapping(value = "/addAuthor/{id}", method = RequestMethod.GET)
     public String addAuthor(Model model, @PathVariable(required = true, name = "id") Long id) {
         if (null != id) {
@@ -75,8 +87,19 @@ public class BookController {
         } else {
             model.addAttribute("book", new Book());
         }
-        return "addAuthor";
+        return "addAuthor-УДАЛИТЬ";
     }
-
-
 }
+//    @RequestMapping(value = {"/authorList/{id}"}, method = RequestMethod.GET)
+//    public String authorList(Model model, @PathVariable(required = false, name = "id") Long id) {
+//        Book book = bookService.get(id);
+//        model.addAttribute("authorList", book.getAuthors());
+//        return "authorList";
+//    }
+//
+//    @RequestMapping(value = {"/genreList/{id}"}, method = RequestMethod.GET)
+//    public String genreList(Model model, @PathVariable(required = false, name = "id") Long id) {
+//        Book book = bookService.get(id);
+//        model.addAttribute("genreList", book.getGenres());
+//        return "genreList";
+//    }

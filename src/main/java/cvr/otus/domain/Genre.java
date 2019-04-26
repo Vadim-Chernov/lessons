@@ -6,10 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-//@NamedQueries({
-//        @NamedQuery(name = "Genre.all", query = "select g from Genre g"),
-//        @NamedQuery(name = "Genre.byName", query = "select g from Genre g where g.name = :name"),
-//})
 public class Genre {
     @Id
     @GeneratedValue
@@ -22,6 +18,10 @@ public class Genre {
     }
 
     public Genre() {
+    }
+    @Override
+    public String toString(){
+        return name;
     }
 
 }
