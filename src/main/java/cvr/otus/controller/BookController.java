@@ -80,6 +80,32 @@ public class BookController {
         return "bookEdit";
     }
 
+
+    @RequestMapping(value = "/book/{book_id}/genre/del/{genre_id}", method = RequestMethod.GET)
+    public String genreDelete(Model model,
+                               @PathVariable(required = true, name = "book_id") Long book_id,
+                               @PathVariable(required = true, name = "genre_id") Long genre_id) {
+        bookService.removeGenre(book_id,genre_id);
+        Book book = bookService.get(book_id);
+        model.addAttribute("book", book);
+        return "bookEdit";
+    }
+
+    @RequestMapping(value = "/book/{book_id}/genre/add/{genre_id}", method = RequestMethod.GET)
+    public String genreAdd(Model model,
+                              @PathVariable(required = true, name = "book_id") Long book_id,
+                              @PathVariable(required = true, name = "genre_id") Long genre_id) {
+        bookService.addGenre(book_id,genre_id);
+        Book book = bookService.get(book_id);
+        model.addAttribute("book", book);
+        return "bookEdit";
+    }
+
+
+
+
+
+
     @RequestMapping(value = "/addAuthor/{id}", method = RequestMethod.GET)
     public String addAuthor(Model model, @PathVariable(required = true, name = "id") Long id) {
         if (null != id) {
@@ -90,16 +116,3 @@ public class BookController {
         return "addAuthor-УДАЛИТЬ";
     }
 }
-//    @RequestMapping(value = {"/authorList/{id}"}, method = RequestMethod.GET)
-//    public String authorList(Model model, @PathVariable(required = false, name = "id") Long id) {
-//        Book book = bookService.get(id);
-//        model.addAttribute("authorList", book.getAuthors());
-//        return "authorList";
-//    }
-//
-//    @RequestMapping(value = {"/genreList/{id}"}, method = RequestMethod.GET)
-//    public String genreList(Model model, @PathVariable(required = false, name = "id") Long id) {
-//        Book book = bookService.get(id);
-//        model.addAttribute("genreList", book.getGenres());
-//        return "genreList";
-//    }

@@ -75,7 +75,7 @@
 
                             <tbody>
                             </tr>
-                            <tr th:each="author : ${book.authors}">
+                            <tr th:each="author : ${@bookServiceImpl.notAuthors(__${book.id}__)}">
                                 <td th:text="${author.id}" hidden></td>
                                 <td th:text="${author.name}"></td>
                                 <td>
@@ -83,6 +83,7 @@
                                 </td>
                             </tr>
                             </tbody>
+
                         </table>
                     </td>
                 </tr>
@@ -112,17 +113,19 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Название</th>
+                                <th>Жанр</th>
                                 <th>Удалить ?</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr th:each="genre : ${book.genres}">
-                                <td th:text="${genre.id}" hidden>1</td>
-                                <td th:text="${genre.name}">Камасутра</td>
+                                <td th:text="${genre.id}" hidden></td>
+                                <td th:text="${genre.name}"></td>
+
                                 <td>
-                                    <a href="/bookEdit/1" th:href="@{/bookEdit/__${genre.id}__}">Да</a>
+<!--                                    <a href="/bookEdit/1" th:href="@{/bookEdit/__${genre.id}__}">Да</a>-->
+                                    <a th:href="@{/book/__${book.id}__/genre/del/__${genre.id}__ }">Да</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -134,28 +137,21 @@
                             <thead>
                             <tr>
                                 <th>Название</th>
-                                <th>Операция</th>
+                                <th>Добавить?</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td>Petrov</td>
-                                <td>Добавить</td>
                             </tr>
-                            <tr>
-                                <td>Sidorov</td>
-                                <td>Добавить</td>
-                            </tr>
-                            <tr>
-                                <td>Petrov</td>
-                                <td>Добавить</td>
-                            </tr>
-                            <tr>
-                                <td>Petrov</td>
-                                <td>Добавить</td>
+                            <tr th:each="genre : ${@bookServiceImpl.notGenres(__${book.id}__)}">
+                                <td th:text="${genre.id}" hidden></td>
+                                <td th:text="${genre.name}"></td>
+                                <td>
+                                    <a th:href="@{/book/__${book.id}__/genre/add/__${genre.id}__ }">Да</a>
+                                </td>
                             </tr>
                             </tbody>
+
                         </table>
                     </td>
                 </tr>

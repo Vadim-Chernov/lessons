@@ -23,8 +23,8 @@ public interface BookService {
 
     Book removeGenre(Long book_id, Long genre_id);
 
-    List<Author> notAuthors();
+    List<Author> notAuthors(Long book_id);
 
-    List<Genre> notGenres();
+    List<Genre> notGenres(Long book_id);
 
 }
