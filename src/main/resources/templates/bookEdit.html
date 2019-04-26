@@ -25,15 +25,16 @@
             <input type="text" class="form-control" id="title" th:field="${book.name}"/>
         </div>
         <div class="form-group">
-            <label for="content">Описание</label>
-            <textarea class="form-control" id="content" th:field="${book.comment}"></textarea>
+            <label for="comment">Описание</label>
+            <input type="text" class="form-control" id="comment" th:field="${book.comment}"/>
+<!--            <textarea class="form-control" id="content" th:field="${book.comment}"></textarea>-->
         </div>
         <table class="table">
-            <thead>
-            <tr>
-                <th>Авторы</th>
-            </tr>
-            </thead>
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Авторы</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
             <tbody>
             <table class="table" border="single">
                 <thead>
@@ -65,7 +66,7 @@
                         </table>
                     </td>
                     <td>
-                        <table class="table" border="single">
+                        <table class="table">
                             <thead>
                             <tr>
                                 <th> Ф И О</th>
@@ -93,13 +94,13 @@
         </table>
 
         <table class="table">
-            <thead>
-            <tr>
-                <th>Жанры</th>
-            </tr>
-            </thead>
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Жанры</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
             <tbody>
-            <table class="table" border="single">
+            <table class="table" >
                 <thead>
                 <tr>
                     <th>Жанры книги</th>
