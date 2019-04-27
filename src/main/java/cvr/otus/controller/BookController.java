@@ -48,10 +48,12 @@ public class BookController {
             book1.setName(book.getName());
             book1.setComment(book.getComment());
             bookService.save(book1);
-            model.addAttribute("bookList", bookService.findAll());
-            return "bookList";
         }
-        return "error";
+        else {
+            bookService.save(book);
+        }
+        model.addAttribute("bookList", bookService.findAll());
+        return "bookList";
     }
 
     @RequestMapping(value = "/bookDelete/{id}", method = RequestMethod.GET)
@@ -101,18 +103,14 @@ public class BookController {
         return "bookEdit";
     }
 
-
-
-
-
-
-    @RequestMapping(value = "/addAuthor/{id}", method = RequestMethod.GET)
-    public String addAuthor(Model model, @PathVariable(required = true, name = "id") Long id) {
-        if (null != id) {
-            model.addAttribute("book", bookService.get(id));
-        } else {
-            model.addAttribute("book", new Book());
-        }
-        return "addAuthor-УДАЛИТЬ";
-    }
+//
+//    @RequestMapping(value = "/addAuthor/{id}", method = RequestMethod.GET)
+//    public String addAuthor(Model model, @PathVariable(required = true, name = "id") Long id) {
+//        if (null != id) {
+//            model.addAttribute("book", bookService.get(id));
+//        } else {
+//            model.addAttribute("book", new Book());
+//        }
+//        return "addAuthor-УДАЛИТЬ";
+//    }
 }

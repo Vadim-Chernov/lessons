@@ -15,9 +15,7 @@
 </head>
 <body>
 <div class="container">
-
     <h1>Описание книги</h1>
-
     <form class="form-group" action="/bookEdit" th:action="@{/bookEdit}" method="post">
         <input th:type="hidden" name="id" th:field="${book.id}"/>
         <div class="form-group">
@@ -27,14 +25,8 @@
         <div class="form-group">
             <label for="comment">Описание</label>
             <input type="text" class="form-control" id="comment" th:field="${book.comment}"/>
-<!--            <textarea class="form-control" id="content" th:field="${book.comment}"></textarea>-->
         </div>
         <table class="table">
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Авторы</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
             <tbody>
             <table class="table" border="single">
                 <thead>
@@ -43,7 +35,6 @@
                     <th>Все авторы</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <tr>
                     <td>
@@ -94,11 +85,6 @@
         </table>
 
         <table class="table">
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Жанры</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
             <tbody>
             <table class="table" >
                 <thead>
@@ -123,9 +109,7 @@
                             <tr th:each="genre : ${book.genres}">
                                 <td th:text="${genre.id}" hidden></td>
                                 <td th:text="${genre.name}"></td>
-
                                 <td>
-<!--                                    <a href="/bookEdit/1" th:href="@{/bookEdit/__${genre.id}__}">Да</a>-->
                                     <a th:href="@{/book/__${book.id}__/genre/del/__${genre.id}__ }">Да</a>
                                 </td>
                             </tr>
@@ -141,7 +125,6 @@
                                 <th>Добавить?</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             </tr>
                             <tr th:each="genre : ${@bookServiceImpl.notGenres(__${book.id}__)}">
@@ -152,7 +135,6 @@
                                 </td>
                             </tr>
                             </tbody>
-
                         </table>
                     </td>
                 </tr>
@@ -160,14 +142,9 @@
             </table>
             </tbody>
         </table>
-
-
         <button type="submit" class="btn btn-primary">Сохранить</button>
         <a href="#" th:href="@{/}" class="btn btn-danger" role="button">Отменить</a>
-
     </form>
-
 </div>
-
 </body>
 </html>

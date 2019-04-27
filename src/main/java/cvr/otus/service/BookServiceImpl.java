@@ -50,6 +50,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Author> notAuthors(Long book_id) {
+        if(book_id==null)
+            return authorRepository.findAll();
         List<Author> authors = repository.getById(book_id).getAuthors();
         List<Author> result = new ArrayList<>(10);
         for (Author author : authorRepository.findAll())
@@ -60,6 +62,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Genre> notGenres(Long book_id) {
+        if(book_id==null)
+            return genreRepository.findAll();;
         Book book = repository.getById(book_id);
         List<Genre> genres = book.getGenres();
         List<Genre> list = genreRepository.findAll();
