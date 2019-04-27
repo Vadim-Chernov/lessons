@@ -9,5 +9,5 @@ public interface GenreService {
 
     List<Genre> findAll();
 
-    Genre get(Long id);
+    Genre get(String id);
 }

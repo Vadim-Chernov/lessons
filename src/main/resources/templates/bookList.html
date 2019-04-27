@@ -20,7 +20,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
+<!--            <th>Id</th>-->
             <th>Название</th>
             <th>Описание</th>
             <th>Авторы</th>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         <tr th:each="book : ${bookList}">
-            <td th:text="${book.id}">1</td>
+            <td th:text="${book.id}" hidden>1</td>
             <td th:text="${book.name}">Камасутра</td>
             <td th:text="${book.comment}">Как ремонтировать Москвич</td>
             <td th:text="${book.authors}">Ленин, Сталин</td>

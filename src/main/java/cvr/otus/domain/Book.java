@@ -1,48 +1,49 @@
 package cvr.otus.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-@Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document
 public class Book {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     private String name;
 
     private String comment;
 
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {})
+    @DBRef
     private List<Genre> genres = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {})
+
+    @DBRef
     private List<Author> authors = new ArrayList<>();
 
     public Book(String name) {
         this.name = name;
     }
 
-    public Book() {
-    }
-
-    private String sayAuthros() {
-        return authors.toString();
+    public Book(String name, String comment, Author[] authors, Genre[] genres) {
+        this.name = name;
+        this.comment = comment;
+        this.authors = Arrays.asList(authors);
+        this.genres = Arrays.asList(genres);
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + getId() +
-                ", name=" + getName() +
-                ", comment=" + comment +
-                ", genres=" + genres +
-                ", authors=" + authors +
-                '}';
+        return name;
     }
+
 }

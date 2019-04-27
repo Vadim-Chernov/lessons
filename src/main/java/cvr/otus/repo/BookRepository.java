@@ -1,26 +1,18 @@
 package cvr.otus.repo;
 
-import cvr.otus.domain.Author;
+import com.mongodb.lang.Nullable;
 import cvr.otus.domain.Book;
-import cvr.otus.domain.Genre;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface BookRepository extends CrudRepository<Book,Long> ,BookRepositoryCustom{
+public interface BookRepository extends MongoRepository<Book, String>, BookRepositoryCustom {
 
-    Book getById(Long id);
+    Book getById(String id);
 
     @SuppressWarnings("unchecked")
     Book save(Book book);
 
     List<Book> findAll();
 
-//    Book addGenre(Long book, Long genre);
-//
-//    Book addAuthor(Long book, Long author);
-//
-//    Book removeGenre(Long book, Long genre);
-//
-//    Book removeAuthor(Long book, Long author);
 }

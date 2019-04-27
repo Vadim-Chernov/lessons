@@ -17,14 +17,14 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     private final AuthorRepository authorRepository;
     private final GenreRepository genreRepository;
 
-//    @Autowired
+    //    @Autowired
     public BookRepositoryImpl( AuthorRepository authorRepository, GenreRepository genreRepository) {
         this.authorRepository = authorRepository;
         this.genreRepository = genreRepository;
     }
 
     @Override
-    public Book addGenre(Long book_id, Long genre_id) {
+    public Book addGenre(String book_id, String genre_id) {
         Book book = bookRepository.getById(book_id);
         Genre genre = genreRepository.getById(genre_id);
         book.getGenres().add(genre);
@@ -32,7 +32,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Book addAuthor(Long book_id, Long author_id) {
+    public Book addAuthor(String book_id, String author_id) {
         Book book = bookRepository.getById(book_id);
         Author author = authorRepository.getById(author_id);
         book.getAuthors().add(author);
@@ -40,7 +40,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Book removeGenre(Long book_id, Long genre_id) {
+    public Book removeGenre(String book_id, String genre_id) {
         Book book = bookRepository.getById(book_id);
         Genre genre = genreRepository.getById(genre_id);
         book.getGenres().remove(genre);
@@ -48,7 +48,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Book removeAuthor(Long book_id, Long author_id) {
+    public Book removeAuthor(String book_id, String author_id) {
         Book book = bookRepository.getById(book_id);
         Author author = authorRepository.getById(author_id);
         book.getAuthors().remove(author);

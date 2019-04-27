@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface BookRepositoryCustom {
 
-    Book addGenre(Long book, Long genre);
+    Book addGenre(String book, String genre);
 
-    Book addAuthor(Long book, Long author);
+    Book addAuthor(String book, String author);
 
-    Book removeGenre(Long book, Long genre);
+    Book removeGenre(String book, String genre);
 
-    Book removeAuthor(Long book, Long author);
+    Book removeAuthor(String book, String author);
 }

@@ -9,6 +9,6 @@ public interface AuthorService {
 
     List<Author> findAll();
 
-    Author get(Long id);
+    Author get(String id);
 
 }

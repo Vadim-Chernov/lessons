@@ -28,7 +28,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author get(Long id) {
+    public Author get(String id) {
         return repository.getById(id);
     }
 

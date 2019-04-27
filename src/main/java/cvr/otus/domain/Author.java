@@ -1,15 +1,19 @@
 package cvr.otus.domain;
 
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-
-@Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document
 public class Author {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     private String name;
 
@@ -17,12 +21,9 @@ public class Author {
         this.name = name;
     }
 
-    public Author() {
-
-    }
-
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
+
 }

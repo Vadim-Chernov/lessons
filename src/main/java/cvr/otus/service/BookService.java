@@ -11,20 +11,20 @@ public interface BookService {
 
     List<Book> findAll();
 
-    Book get(Long id);
+    Book get(String id);
 
-    void remove(Long id);
+    void remove(String id);
 
-    Book addAuthor(Long book_id, Long author_id);
+    Book addAuthor(String book_id, String author_id);
 
-    Book addGenre(Long book_id, Long genre_id);
+    Book addGenre(String book_id, String genre_id);
 
-    Book removeAuthor(Long book_id, Long author_id);
+    Book removeAuthor(String book_id, String author_id);
 
-    Book removeGenre(Long book_id, Long genre_id);
+    Book removeGenre(String book_id, String genre_id);
 
-    List<Author> notAuthors(Long book_id);
+    List<Author> notAuthors(String book_id);
 
-    List<Genre> notGenres(Long book_id);
+    List<Genre> notGenres(String book_id);
 
 }

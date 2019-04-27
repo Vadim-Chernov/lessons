@@ -7,7 +7,6 @@ import cvr.otus.repo.AuthorRepository;
 import cvr.otus.repo.BookRepository;
 import cvr.otus.repo.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,27 +28,27 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public Book addAuthor(Long book, Long author) {
+    public Book addAuthor(String book, String author) {
         return repository.addAuthor(book, author);
     }
 
     @Override
-    public Book addGenre(Long book, Long genre) {
+    public Book addGenre(String book, String genre) {
         return repository.addGenre(book, genre);
     }
 
     @Override
-    public Book removeAuthor(Long book, Long author) {
+    public Book removeAuthor(String book,  String author) {
         return repository.removeAuthor(book, author);
     }
 
     @Override
-    public Book removeGenre(Long book, Long genre) {
+    public Book removeGenre(String book, String genre) {
         return repository.removeGenre(book, genre);
     }
 
     @Override
-    public List<Author> notAuthors(Long book_id) {
+    public List<Author> notAuthors(String book_id) {
         if(book_id==null)
             return authorRepository.findAll();
         List<Author> authors = repository.getById(book_id).getAuthors();
@@ -61,7 +60,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Genre> notGenres(Long book_id) {
+    public List<Genre> notGenres(String book_id) {
         if(book_id==null)
             return genreRepository.findAll();;
         Book book = repository.getById(book_id);
@@ -85,12 +84,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book get(Long id) {
+    public Book get(String id) {
         return repository.getById(id);
     }
 
     @Override
-    public void remove(Long id) {
+    public void remove(String id) {
         Book book = repository.getById(id);
         if (book != null)
             repository.delete(book);

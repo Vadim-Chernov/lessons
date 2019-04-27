@@ -1,8 +1,10 @@
 spring:
   jmx:
     enabled: false
-  liquibase:
-    enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  data:
+    mongodb:
+      uri: mongodb://localhost
+      port: 27017
+      database: test
 server:
-  port: 8888
+  port: 8889

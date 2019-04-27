@@ -1,7 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: 2019-03-21--0001-seq
-      author: chernov.vr
-      createSequence:
-        sequenceName: HIBERNATE_SEQUENCE
-        incrementBy: 1
