@@ -67,7 +67,7 @@
 
                             <tbody>
                             </tr>
-                            <tr th:each="author : ${@bookServiceImpl.notAuthors(__${book.id}__)}">
+                            <tr th:each="author : ${@bookServiceImpl.notAuthors(book.id)}">
                                 <td th:text="${author.id}" hidden></td>
                                 <td th:text="${author.name}"></td>
                                 <td>
@@ -126,7 +126,7 @@
                             </thead>
                             <tbody>
                             </tr>
-                            <tr th:each="genre : ${@bookServiceImpl.notGenres(__${book.id}__)}">
+                            <tr th:each="genre : ${@bookServiceImpl.notGenres(book.id)}">
                                 <td th:text="${genre.id}" hidden></td>
                                 <td th:text="${genre.name}"></td>
                                 <td>
