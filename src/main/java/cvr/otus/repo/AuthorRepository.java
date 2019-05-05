@@ -12,5 +12,5 @@ public interface AuthorRepository extends MongoRepository<Author,String> {
     @SuppressWarnings("unchecked")
     Author save(Author author);
 
-    List<Author> findAll();
+//    List<Author> findAll();
 }

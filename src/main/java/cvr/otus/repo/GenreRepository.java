@@ -12,5 +12,5 @@ public interface GenreRepository extends MongoRepository<Genre,String> {
     @SuppressWarnings("unchecked")
     Genre save(Genre name);
 
-    List<Genre> findAll();
+//    List<Genre> findAll();
 }

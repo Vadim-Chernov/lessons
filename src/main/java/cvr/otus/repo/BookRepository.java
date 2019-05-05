@@ -13,6 +13,6 @@ public interface BookRepository extends MongoRepository<Book, String>, BookRepos
     @SuppressWarnings("unchecked")
     Book save(Book book);
 
-    List<Book> findAll();
+//    List<Book> findAll();
 
 }

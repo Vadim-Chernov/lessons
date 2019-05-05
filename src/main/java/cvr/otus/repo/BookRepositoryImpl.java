@@ -24,33 +24,33 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Book addGenre(String book_id, String genre_id) {
-        Book book = bookRepository.getById(book_id);
-        Genre genre = genreRepository.getById(genre_id);
+    public Book addGenre(String bookId, String genreId) {
+        Book book = bookRepository.getById(bookId);
+        Genre genre = genreRepository.getById(genreId);
         book.getGenres().add(genre);
         return bookRepository.save(book);
     }
 
     @Override
-    public Book addAuthor(String book_id, String author_id) {
-        Book book = bookRepository.getById(book_id);
-        Author author = authorRepository.getById(author_id);
+    public Book addAuthor(String bookId, String authorId) {
+        Book book = bookRepository.getById(bookId);
+        Author author = authorRepository.getById(authorId);
         book.getAuthors().add(author);
         return bookRepository.save(book);
     }
 
     @Override
-    public Book removeGenre(String book_id, String genre_id) {
-        Book book = bookRepository.getById(book_id);
-        Genre genre = genreRepository.getById(genre_id);
+    public Book removeGenre(String bookId, String genreId) {
+        Book book = bookRepository.getById(bookId);
+        Genre genre = genreRepository.getById(genreId);
         book.getGenres().remove(genre);
         return bookRepository.save(book);
     }
 
     @Override
-    public Book removeAuthor(String book_id, String author_id) {
-        Book book = bookRepository.getById(book_id);
-        Author author = authorRepository.getById(author_id);
+    public Book removeAuthor(String bookId, String authorId) {
+        Book book = bookRepository.getById(bookId);
+        Author author = authorRepository.getById(authorId);
         book.getAuthors().remove(author);
         return bookRepository.save(book);
     }
