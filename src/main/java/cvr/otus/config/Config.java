@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
     private static final String CHANGE_LOG_PACKAGE = "cvr.otus.changelogs";
 
-    @Bean
-    public Mongock mongock(MongoProps mongoProps, MongoClient mongoClient) {
-        return new SpringMongockBuilder(mongoClient, mongoProps.getDatabase(), CHANGE_LOG_PACKAGE)
-                .setLockQuickConfig()
-                .build();
-    }
+//    @Bean
+//    public Mongock mongock(MongoProps mongoProps, MongoClient mongoClient) {
+//        return new SpringMongockBuilder(mongoClient, mongoProps.getDatabase(), CHANGE_LOG_PACKAGE)
+//                .setLockQuickConfig()
+//                .build();
+//    }
 }

@@ -47,7 +47,7 @@ public class FakeMongoDBDataChangeLog {
 
     @ChangeSet(order = "003", id = "faceBooks", author = MY_NAME, runAlways = true)
     public void faceBooks(MongoTemplate template) {
-        books[0] = new Book("Камасутра","Как ремонтировать машину Москвич",authors,genres);
+        books[0] = new Book("M-412","Как ремонтировать машину Москвич",authors,genres);
         books[1] = new Book("Анекдот","Про Петьку",new Author[] {authors[0],authors[1]},new Genre[] {genres[1]} );
         books[2] = new Book("Публицистика");
         books[0] = template.save(books[0]);
