@@ -10,4 +10,7 @@ public interface GenreService {
     List<Genre> findAll();
 
     Genre get(String id);
+
+    void deleteAll();
+
 }

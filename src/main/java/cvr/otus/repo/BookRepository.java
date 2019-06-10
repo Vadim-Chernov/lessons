@@ -3,16 +3,16 @@ package cvr.otus.repo;
 import com.mongodb.lang.Nullable;
 import cvr.otus.domain.Book;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public interface BookRepository extends MongoRepository<Book, String>, BookRepositoryCustom {
+public interface BookRepository extends ReactiveMongoRepository<Book, String>, BookRepositoryCustom {
 
-    Book getById(String id);
+    Mono<Book> getById(String id);
 
-    @SuppressWarnings("unchecked")
-    Book save(Book book);
+    Mono<Book> save(Book book);
 
-//    List<Book> findAll();
 
 }

@@ -2,15 +2,17 @@ package cvr.otus.repo;
 
 import cvr.otus.domain.Genre;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public interface GenreRepository extends MongoRepository<Genre,String> {
+public interface GenreRepository extends ReactiveMongoRepository<Genre, String> {
 
-    Genre getById(String id);
+    Mono<Genre> getById(String id);
 
     @SuppressWarnings("unchecked")
-    Genre save(Genre name);
+    Mono<Genre> save(Genre name);
 
-//    List<Genre> findAll();
+
 }

@@ -14,13 +14,15 @@ import java.util.List;
 
 @Controller
 public class BookController {
-    private final BookService bookService;
-
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-//        test();
+    private BookService bookService;
+
+    public BookController() {
     }
+//    public BookController(BookService bookService) {
+//        this.bookService = bookService;
+////        test();
+//    }
 
 //    private void test() {
 //        List<Book> books = bookService.findAll();

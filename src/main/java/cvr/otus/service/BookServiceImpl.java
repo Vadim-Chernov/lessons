@@ -3,9 +3,7 @@ package cvr.otus.service;
 import cvr.otus.domain.Author;
 import cvr.otus.domain.Book;
 import cvr.otus.domain.Genre;
-import cvr.otus.repo.AuthorRepository;
 import cvr.otus.repo.BookRepository;
-import cvr.otus.repo.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +13,20 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    private final BookRepository repository;
-    private final AuthorRepository authorRepository;
-    private final GenreRepository genreRepository;
-
     @Autowired
-    public BookServiceImpl(BookRepository repository, AuthorRepository authorRepository, GenreRepository genreRepository) {
-        this.repository = repository;
-        this.authorRepository = authorRepository;
-        this.genreRepository = genreRepository;
+    private BookRepository repository;
+    @Autowired
+    private AuthorService authorService;
+    @Autowired
+    private GenreService genreService;
+
+    public BookServiceImpl() {
     }
+//    public BookServiceImpl(BookRepository repository, AuthorService authorService, GenreService genreService) {
+//        this.repository = repository;
+//        this.authorService = authorService;
+//        this.genreService = genreService;
+//    }
 
 
     @Override
@@ -50,10 +52,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Author> notAuthors(String book_id) {
         if(book_id==null)
-            return authorRepository.findAll();
-        List<Author> authors = repository.getById(book_id).getAuthors();
+            return authorService.findAll();
+        List<Author> authors = repository.getById(book_id).block().getAuthors();
         List<Author> result = new ArrayList<>(10);
-        for (Author author : authorRepository.findAll())
+        for (Author author : authorService.findAll())
             if (!authors.contains(author))
                 result.add(author);
         return result;
@@ -62,10 +64,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Genre> notGenres(String book_id) {
         if(book_id==null)
-            return genreRepository.findAll();;
-        Book book = repository.getById(book_id);
+            return genreService.findAll();;
+        Book book = repository.getById(book_id).block();
         List<Genre> genres = book.getGenres();
-        List<Genre> list = genreRepository.findAll();
+        List<Genre> list = genreService.findAll();
         List<Genre> result = new ArrayList<>(list.size());
         for(Genre genre : list)
             if(!genres.contains(genre))
@@ -75,25 +77,30 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book save(Book book) {
-        return repository.save(book);
+        return repository.save(book).block();
     }
 
     @Override
     public List<Book> findAll() {
-        return repository.findAll();
+        List<Book> books = new ArrayList<>();
+        repository.findAll().map(book -> books.add(book));
+        return books;
     }
 
     @Override
     public Book get(String id) {
-        return repository.getById(id);
+        return repository.getById(id).block();
     }
 
     @Override
     public void remove(String id) {
-        Book book = repository.getById(id);
+        Book book = repository.getById(id).block();
         if (book != null)
             repository.delete(book);
     }
 
-
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
+    }
 }

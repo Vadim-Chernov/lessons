@@ -27,4 +27,5 @@ public interface BookService {
 
     List<Genre> notGenres(String book_id);
 
+    void deleteAll();
 }

@@ -1,16 +1,17 @@
 package cvr.otus.repo;
 
 import cvr.otus.domain.Author;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public interface AuthorRepository extends MongoRepository<Author,String> {
+public interface AuthorRepository extends ReactiveMongoRepository<Author, String> {
 
-    Author getById(String id);
+    Mono<Author> getById(String id);
 
     @SuppressWarnings("unchecked")
-    Author save(Author author);
+    Mono<Author> save(Author author);
 
-//    List<Author> findAll();
+
 }
