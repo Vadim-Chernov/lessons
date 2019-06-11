@@ -1,10 +1,8 @@
-package cvr.otus.repo;
+package cvr.otus.repository;
 
 import cvr.otus.domain.Author;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 public interface AuthorRepository extends ReactiveMongoRepository<Author, String> {
 

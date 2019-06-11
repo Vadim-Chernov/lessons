@@ -4,10 +4,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost
-      port: 27017
+      port: 0
       database: test
-#    mongodb:
-#      port: 0
-#      database: test
 server:
   port: 8889

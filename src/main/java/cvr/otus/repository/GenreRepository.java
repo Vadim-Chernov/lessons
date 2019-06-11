@@ -1,11 +1,8 @@
-package cvr.otus.repo;
+package cvr.otus.repository;
 
 import cvr.otus.domain.Genre;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 public interface GenreRepository extends ReactiveMongoRepository<Genre, String> {
 

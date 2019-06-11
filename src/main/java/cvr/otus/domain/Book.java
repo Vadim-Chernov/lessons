@@ -30,20 +30,32 @@ public class Book {
     @DBRef
     private List<Author> authors = new ArrayList<>();
 
+//    public void deleteAuthor(String authorId) {
+//        for (Author author : authors)
+//            if (authorId.equals(author.getId()))
+//                authors.remove(author);
+//    }
+
+    public Book copy(Book b) {
+        if (b.getId() == null)
+            return new Book();
+        Book book = new Book();
+        book.setId(b.getId());
+        book.setName(b.getName());
+        book.setComment(b.getComment());
+        book.setAuthors(b.getAuthors());
+        book.setGenres(b.getGenres());
+        return book;
+    }
+
     public Book(String name) {
         this.name = name;
     }
 
-    public Book(String name, String comment, Author[] authors, Genre[] genres) {
+    public Book(String name, String comment,  Author[] authors, Genre[] genres) {
         this.name = name;
         this.comment = comment;
         this.authors = Arrays.asList(authors);
         this.genres = Arrays.asList(genres);
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
 }
