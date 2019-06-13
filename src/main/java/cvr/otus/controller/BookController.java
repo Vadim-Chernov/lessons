@@ -45,10 +45,11 @@ public class BookController {
                     existingBook.setComment(book.getComment());
                     existingBook.setAuthors(book.getAuthors());
                     existingBook.setGenres(book.getGenres());
-                    return bookRepository.save(existingBook);
+                    return bookRepository.save(existingBook).defaultIfEmpty(new Book());
                 })
                 .map(updateBook -> new ResponseEntity<>(updateBook, HttpStatus.OK))
-                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND))
+                ;
     }
 
     @DeleteMapping("/books/{id}")

@@ -31,7 +31,7 @@ public class BookControllerTest extends BookFakeFilling {
     }
 
     @Test
-    public void bookCreateTest() {
+    public void testBookCreate() {
         Book book = new Book("Книга1");
 
         webTestClient.post().uri("/books")
