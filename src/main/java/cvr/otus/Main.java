@@ -29,13 +29,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = SpringApplication.run(Main.class);
 
-        FakeData fakeMongo = new FakeData(
+        FakeData fakeData = new FakeData(
                 context.getBean(BookRepository.class),
                 context.getBean(GenreRepository.class),
                 context.getBean(AuthorRepository.class)
         );
 
-        fakeMongo.fillDB();
+        fakeData.fillDB();
     }
 
 

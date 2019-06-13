@@ -9,6 +9,8 @@ import cvr.otus.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.PostConstruct;
+
 public class FakeData {
 
 
@@ -26,8 +28,6 @@ public class FakeData {
         this.genreRepository = genreRepository;
         this.authorRepository = authorRepository;
     }
-
-    @Autowired
 
     public void fillDB() {
         clearTables();
